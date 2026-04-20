@@ -314,7 +314,7 @@ export default function BillBoosterLiveScoreboard() {
           if (b.avg !== a.avg) return b.avg - a.avg;
           return a.server.localeCompare(b.server);
         })
-        .slice(0, 3);
+        .slice(0, teamFilter === "Part Time" ? 5 : 3);
 
       const fallbackQualified =
         qualified.length > 0
@@ -365,7 +365,7 @@ export default function BillBoosterLiveScoreboard() {
   const stageBannerText =
     stageFilter === "Stage 1"
       ? `${STAGE_1_DATES} • Opening Round • Top 3 from each team qualify`
-      : `${STAGE_2_DATES} • Qualified servers battle for the win`;
+      : `${STAGE_2_DATES} • FT Top 3 + PT Top 5 battle for the win`;
   const sectionTitle =
     stageFilter === "Stage 2"
       ? `${teamFilter} Qualified Servers`
