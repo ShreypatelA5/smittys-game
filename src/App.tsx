@@ -802,7 +802,7 @@ export default function BillBoosterLiveScoreboard() {
               <p className="text-sm font-semibold tracking-wide text-slate-600">
                 <span className="text-red-500">•</span>{" "}
                 <span className="bg-gradient-to-r from-red-600 via-rose-500 to-orange-500 bg-clip-text font-black text-transparent">
-                  Design by Shrey Patel
+                   Design by Shrey Patel
                 </span>{" "}
                 <span className="text-red-500">•</span>
               </p>
