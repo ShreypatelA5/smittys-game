@@ -1,18 +1,17 @@
-import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
-  Trophy,
-  Flame,
-  Target,
-  Clock3,
-  Medal,
-  TrendingUp,
-  Crown,
-  Star,
-  Users,
   Award,
-  Zap,
+  Clock3,
+  Crown,
+  Flame,
+  Medal,
+  Star,
+  Target,
+  Trophy,
+  Users,
+  Zap
 } from "lucide-react";
+import React, { useEffect, useMemo, useState } from "react";
 
 const GOOGLE_SHEET_CSV_URL =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vRCVpIe1SLclYRteLHwaK2eCpmoua4rm7oaCIgd5h0MpKynAGZJoVWACexAeSGDMVn0u24Nf4O9Y_F8/pub?gid=1052393092&single=true&output=csv";
@@ -314,7 +313,7 @@ export default function BillBoosterLiveScoreboard() {
           if (b.avg !== a.avg) return b.avg - a.avg;
           return a.server.localeCompare(b.server);
         })
-        .slice(0, 3);
+        .slice(0, teamFilter === "Part Time" ? 5 : 3);
 
       const fallbackQualified =
         qualified.length > 0
@@ -365,7 +364,7 @@ export default function BillBoosterLiveScoreboard() {
   const stageBannerText =
     stageFilter === "Stage 1"
       ? `${STAGE_1_DATES} • Opening Round • Top 3 from each team qualify`
-      : `${STAGE_2_DATES} • Qualified servers battle for the win`;
+      : `${STAGE_2_DATES} • FT Top 3 + PT Top 5 battle for the win`;
   const sectionTitle =
     stageFilter === "Stage 2"
       ? `${teamFilter} Qualified Servers`
@@ -461,7 +460,7 @@ export default function BillBoosterLiveScoreboard() {
                       Today Target
                     </div>
                     <div className="text-lg font-bold text-slate-900 sm:text-xl">
-                      ${DEFAULT_TARGET.toFixed(0)}/check
+                      ${DEFAULT_TARGET.toFixed(0)}
                     </div>
                   </div>
                 </CardContent>
@@ -802,7 +801,7 @@ export default function BillBoosterLiveScoreboard() {
               <p className="text-sm font-semibold tracking-wide text-slate-600">
                 <span className="text-red-500">•</span>{" "}
                 <span className="bg-gradient-to-r from-red-600 via-rose-500 to-orange-500 bg-clip-text font-black text-transparent">
-                  Design by Shrey Patel
+                  design by Shrey Patel
                 </span>{" "}
                 <span className="text-red-500">•</span>
               </p>
